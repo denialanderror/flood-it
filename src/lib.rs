@@ -12,7 +12,6 @@ pub fn main_js() -> Result<(), JsValue> {
     #[cfg(debug_assertions)]
     console_error_panic_hook::set_once();
 
-    // Your code goes here!
     console::log_1(&JsValue::from_str("Rust initialising..."));
 
     Ok(())
@@ -42,7 +41,7 @@ impl Game {
                 .map(|_| rng.gen_range(0, colours))
                 .collect(),
             size,
-            state: GameState::Continue(size),
+            state: GameState::Continue(25),
         }
     }
 
@@ -55,14 +54,22 @@ impl Game {
             .collect::<Array>()
     }
 
-    pub fn take_turn(&mut self, position: u32, colour: u32) {
+    pub fn take_turn(&mut self, position: u32) {
         if let GameState::Continue(i) = self.state {
-            self.floodfill(position, self.board[position as usize], colour);
+            self.floodfill(0, self.board[0], self.board[position as usize]);
 
             self.state = match self.is_win() {
                 true => GameState::Win,
                 false => self.next_state(i - 1),
             };
+        }
+    }
+
+    pub fn get_state(&self) -> String {
+        match self.state {
+            GameState::Win => "WIN".to_string(),
+            GameState::Continue(x) => x.to_string(),
+            GameState::Lose => "LOSE".to_string(),
         }
     }
 }
@@ -112,7 +119,7 @@ impl Game {
     }
 
     fn down(&self, pos: u32) -> Option<u32> {
-        if pos + self.size < 25 {
+        if pos + self.size < (self.size * self.size) {
             Some(pos + self.size)
         } else {
             None
@@ -222,7 +229,7 @@ mod tests {
             _ => 0,
         };
 
-        game.take_turn(0, expected);
+        game.take_turn(expected);
         let actual = game.board[0];
         assert_eq!(expected, actual);
     }
@@ -236,7 +243,7 @@ mod tests {
         };
         game.board[0] = 1;
 
-        game.take_turn(0, 0);
+        game.take_turn(0);
         assert_eq!(game.state, GameState::Win);
     }
 
@@ -249,7 +256,7 @@ mod tests {
         };
         game.board[0] = 1;
 
-        game.take_turn(0, 2);
+        game.take_turn(2);
         assert_eq!(GameState::Lose, game.state);
     }
 }
