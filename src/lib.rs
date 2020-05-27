@@ -41,13 +41,11 @@ impl Game {
                 .map(|_| rng.gen_range(0, colours))
                 .collect(),
             size,
-            state: GameState::Continue(25),
+            state: GameState::Continue(50),
         }
     }
 
     pub fn get_board(&self) -> Array {
-        console::log_1(&JsValue::from_str(&format!("{:?}", self.board)[..]));
-
         self.board
             .iter()
             .map(|x| JsValue::from(*x))
