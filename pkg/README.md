@@ -1,6 +1,6 @@
 # Flood-It with Rust and WebAssembly
 
-Demo: https://denialanderror.github.io/flood-it/
+https://denialanderror.github.io/flood-it/
 
 ## How to play
 
@@ -11,10 +11,6 @@ The goal of Flood-It is to turn all squares the same colour. Click on a coloured
 This project was developed as a playground for Rust and WebAssembly. It went through a number of iterations and missteps/misunderstandings before settling in this final state. The initial idea came from reading the documentation for the web asset bundler [Parcel](https://parceljs.org/), which made the claim that it could import Rust files as WebAssembly with zero configuration, which turned out to be at best an overexageration of its abilities.
 
 The final solution was to use the fantastic [wasm-bindgen](https://rustwasm.github.io/docs/wasm-bindgen/) library, which allowed for easy exposure of the game logic to the UI as easily ingestable JavaScript code. Initially, this was all being managed and bundled with Webpack but as the UI developed, it became clear that it was possible to do all that was needed without any further transpiliation or external dependencies. As a result, it was simple enough to simply serve the static files as they were and manually call `wasm-pack`.
-
-The UI was written with [lit-html](https://lit-html.polymer-project.org/), which was chosen as something new to try, without overcomplicating the UI side of the project and detracting from the Rust part.
-
-It's worth stating that the `/pkg` directory should not usually be committed but I did so in order for the demo to run on GitHub Pages. I should really publish to NPM instead.
 
 ## To run locally
 

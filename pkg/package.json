@@ -1,0 +1,16 @@
+{
+  "name": "flood-it",
+  "collaborators": [
+    "Sam Joseph <denialanderror@googlemail.com>"
+  ],
+  "description": "Flood-it game logic in Rust targetting WebAssembly",
+  "version": "0.1.0",
+  "files": [
+    "flood_it_bg.wasm",
+    "flood_it.js",
+    "flood_it.d.ts"
+  ],
+  "module": "flood_it.js",
+  "types": "flood_it.d.ts",
+  "sideEffects": false
+}
