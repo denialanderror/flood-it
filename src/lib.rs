@@ -220,19 +220,6 @@ mod tests {
     }
 
     #[test]
-    fn take_turn() {
-        let mut game = Game::new(5, 2);
-        let expected = match game.board[0] {
-            0 => 1,
-            _ => 0,
-        };
-
-        game.take_turn(expected);
-        let actual = game.board[0];
-        assert_eq!(expected, actual);
-    }
-
-    #[test]
     fn take_winning_turn() {
         let mut game = Game {
             board: vec![0; 25],
@@ -241,7 +228,7 @@ mod tests {
         };
         game.board[0] = 1;
 
-        game.take_turn(0);
+        game.take_turn(1);
         assert_eq!(game.state, GameState::Win);
     }
 
@@ -253,8 +240,9 @@ mod tests {
             state: GameState::Continue(1),
         };
         game.board[0] = 1;
+        game.board[20] = 1;
 
-        game.take_turn(2);
+        game.take_turn(1);
         assert_eq!(GameState::Lose, game.state);
     }
 }

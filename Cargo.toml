@@ -1,6 +1,6 @@
 [package]
 name = "flood-it"
-description = "Flood-it game logic in Rust for WASM"
+description = "Flood-it game logic in Rust targetting WebAssembly"
 version = "0.1.0"
 authors = ["Sam Joseph <denialanderror@googlemail.com>"]
 categories = ["wasm"]

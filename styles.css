@@ -1,0 +1,63 @@
+body {
+  background: #aaa380;
+  margin: 0;
+  padding: 0;
+  font-family: "Arvo", serif;
+}
+
+.controls {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4rem;
+  text-align: center;
+  font-size: 48px;
+  -webkit-text-stroke: 2px black;
+  color: white;
+  background: #bbb592;
+  box-shadow: 0 5px 10px 0 #8b8366;
+}
+
+.board {
+  margin-top: 4rem;
+  display: grid;
+  gap: 0.2rem;
+  padding: 1rem;
+}
+
+.board div::before {
+  content: "";
+  padding-bottom: 100%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.square {
+  border: 0.2rem solid #000000;
+  border-radius: 1rem;
+}
+
+.square:hover {
+  filter: brightness(80%);
+}
+
+.red {
+  background: #ce5c2f;
+}
+
+.green {
+  background: #8fc603;
+}
+
+.blue {
+  background: #34809e;
+}
+
+.yellow {
+  background: #e5c63d;
+}
+
+.purple {
+  background: #ad98e2;
+}
