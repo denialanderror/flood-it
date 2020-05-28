@@ -8,5 +8,7 @@ export function game_get_board(a: number): number;
 export function game_take_turn(a: number, b: number): void;
 export function game_get_state(a: number, b: number): void;
 export function __wbindgen_free(a: number, b: number): void;
+export function __wbindgen_malloc(a: number): number;
+export function __wbindgen_realloc(a: number, b: number, c: number): number;
 export function __wbindgen_exn_store(a: number): void;
 export function __wbindgen_start(): void;

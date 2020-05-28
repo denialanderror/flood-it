@@ -38,6 +38,8 @@ export interface InitOutput {
   readonly game_take_turn: (a: number, b: number) => void;
   readonly game_get_state: (a: number, b: number) => void;
   readonly __wbindgen_free: (a: number, b: number) => void;
+  readonly __wbindgen_malloc: (a: number) => number;
+  readonly __wbindgen_realloc: (a: number, b: number, c: number) => number;
   readonly __wbindgen_exn_store: (a: number) => void;
   readonly __wbindgen_start: () => void;
 }

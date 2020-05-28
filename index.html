@@ -7,8 +7,6 @@
     <title>Flood-It with Rust WebAssembly</title>
   </head>
   <body>
-    <div id="game">
-    </div>
     <script type="module">
       import {html, render} from 'https://unpkg.com/lit-html?module';
       import init, { Game } from './pkg/flood_it.js';
@@ -26,14 +24,14 @@
         game = Game.new(size, 5);
         squares = game.get_board();
         setState(game.get_state());
-        render(board(), document.getElementById("game"));
+        render(board(), document.body);
       }
 
       const takeTurn = (position) => {
         game.take_turn(position);
         squares = game.get_board();
         setState(game.get_state());
-        render(board(), document.getElementById("game"));
+        render(board(), document.body);
       };
 
       const setState = (newState) => {
@@ -46,7 +44,7 @@
         }
       };
 
-      const board = () => html` <div class="controls">${state}</div>
+      const board = () => html` <div class="header">${state}</div>
         <div
           class="board"
           style="grid-template: repeat(${size}, 1fr) / repeat(${size}, 1fr);"
